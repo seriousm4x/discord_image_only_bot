@@ -1,5 +1,4 @@
 import imghdr
-from io import StringIO
 from os import getenv
 from urllib.parse import urlparse
 from urllib.request import urlopen
