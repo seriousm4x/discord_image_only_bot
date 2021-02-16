@@ -1,0 +1,8 @@
+version: "3"
+services:
+  app:
+    container_name: discord_image_only_bot
+    build: .
+    environment:
+      TOKEN: <YOUR-TOKEN-HERE>
+    restart: unless-stopped
