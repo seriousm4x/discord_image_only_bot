@@ -6,8 +6,9 @@ from urllib.request import urlopen
 
 import discord
 
-
 TOKEN = getenv("TOKEN")
+MAX_IMAGE_SIZE_MB = getenv("MAX_IMAGE_SIZE_MB")
+MAX_IMAGE_SIZE_BYTES = MAX_IMAGE_SIZE_MB * 1000 * 1000
 client = discord.Client()
 
 
@@ -30,6 +31,11 @@ async def on_message(message):
                     print("header content-type is not image. deleting.")
                     await message.delete()
                     return
+                if int(image.getheader("Content-Length")) > MAX_IMAGE_SIZE_BYTES:
+                    print(
+                        f"image larger than {MAX_IMAGE_SIZE_MB}MB. deleting.")
+                    await message.delete()
+                    return
                 if not imghdr.what(None, image.read()):
                     print("not a valid image. deleting.")
                     await message.delete()
@@ -38,8 +44,9 @@ async def on_message(message):
                 print("message is not a link. deleting.")
                 await message.delete()
                 return
-        except:
+        except Exception as e:
             print("probably not a valid image link. deleting.")
+            print(e)
             await message.delete()
             return
     else:

@@ -5,4 +5,5 @@ services:
     build: .
     environment:
       TOKEN: <YOUR-TOKEN-HERE>
+      MAX_IMAGE_SIZE_MB: 10 # size im MB
     restart: unless-stopped
