@@ -2,8 +2,8 @@ version: "3"
 services:
   app:
     container_name: discord_image_only_bot
-    build: .
+    image: seriousm4x/discord_image_only_bot:latest
     environment:
-      TOKEN: <YOUR-TOKEN-HERE>
+      DISCORD_TOKEN: <YOUR-TOKEN-HERE>
       MAX_IMAGE_SIZE_MB: 10 # size im MB
     restart: unless-stopped

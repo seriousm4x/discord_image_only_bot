@@ -6,7 +6,7 @@ from urllib.request import urlopen
 
 import discord
 
-TOKEN = getenv("TOKEN")
+DISCORD_TOKEN = getenv("DISCORD_TOKEN")
 MAX_IMAGE_SIZE_MB = getenv("MAX_IMAGE_SIZE_MB")
 MAX_IMAGE_SIZE_BYTES = MAX_IMAGE_SIZE_MB * 1000 * 1000
 client = discord.Client()
@@ -57,4 +57,4 @@ async def on_message(message):
                 await message.delete()
                 return
 
-client.run(TOKEN)
+client.run(DISCORD_TOKEN)
